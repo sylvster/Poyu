@@ -1,8 +1,7 @@
 package com.poyu.gui;
 
-import javax.swing.JFrame;
-import java.awt.Container;
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
 
@@ -14,7 +13,27 @@ public class Main {
         //JFrame properties setup
         frame = new JFrame("Poyu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        screen = frame.getContentPane();
+
+        //JPanel properties setup
+        screen = new JPanel();
+
+        //Layout setup
+        layout = new GroupLayout(screen);
+        screen.setLayout(layout);
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
+        JButton amongus = new JButton("Add schedule");
+        layout.setHorizontalGroup(
+                layout.createSequentialGroup()
+                        .addComponent(amongus)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup()
+                        .addComponent(amongus)
+        );
+
+        //Adding the JPanel to the frame
+        frame.add(screen, BorderLayout.CENTER);
 
         //setting the background color of the app
         if(darkMode) {
@@ -33,8 +52,10 @@ public class Main {
     }
 
     private static JFrame frame;
-    private static Container screen;
+    private static JPanel screen;
     private static Color backgroundColor;
+
+    private static GroupLayout layout;
 
     private static boolean darkMode = false;
 
